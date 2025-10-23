@@ -20,9 +20,9 @@ final class AuthorController extends AbstractController
     public function __construct()
     {
         $this->authors = array(
-            array('id' => 1, 'picture' => '/images/Victor-Hugo.jpg', 'username' => 'Victor Hugo', 'email' => 'victor.hugo@gmail.com ', 'nb_books' => 100),
-            array('id' => 2, 'picture' => '/images/william-shakespeare.jpeg', 'username' => ' William Shakespeare', 'email' =>  ' william.shakespeare@gmail.com', 'nb_books' => 200),
-            array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg', 'username' => 'Taha Hussein', 'email' => 'taha.hussein@gmail.com', 'nb_books' => 300),
+            array('id' => 1, 'picture' => '/images/Victor-Hugo.jpg', 'username' => 'Victor Hugo', 'email' => 'victor.hugo@gmail.com ', 'nbBooks' => 100),
+            array('id' => 2, 'picture' => '/images/william-shakespeare.jpeg', 'username' => ' William Shakespeare', 'email' =>  ' william.shakespeare@gmail.com', 'nbBooks' => 200),
+            array('id' => 3, 'picture' => '/images/Taha_Hussein.jpg', 'username' => 'Taha Hussein', 'email' => 'taha.hussein@gmail.com', 'nbBooks' => 300),
         );
     }
 
@@ -115,7 +115,7 @@ final class AuthorController extends AbstractController
         $author = new Author();
         $author->setUsername("abouelkassem");
         $author->setEmail("abouelkassem@gmail.com");
-        $author->setNbBook(50);
+        $author->setNbBooks(50);
         // if ($author) {
         $mr->persist($author);
         $mr->flush();

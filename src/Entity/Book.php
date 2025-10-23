@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BookRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -13,17 +14,17 @@ class Book
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $title = null;
 
     #[ORM\Column]
-    private ?int $published = null;
+    private ?bool $published = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $publish_date = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTime $publishDate = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $category = null;
+    #[ORM\ManyToOne(inversedBy: 'books')]
+    private ?Author $author = null;
 
     public function getId(): ?int
     {
@@ -42,38 +43,38 @@ class Book
         return $this;
     }
 
-    public function getPublished(): ?int
+    public function isPublished(): ?bool
     {
         return $this->published;
     }
 
-    public function setPublished(int $published): static
+    public function setPublished(bool $published): static
     {
         $this->published = $published;
 
         return $this;
     }
 
-    public function getPublishDate(): ?string
+    public function getPublishDate(): ?\DateTime
     {
-        return $this->publish_date;
+        return $this->publishDate;
     }
 
-    public function setPublishDate(?string $publish_date): static
+    public function setPublishDate(?\DateTime $publishDate): static
     {
-        $this->publish_date = $publish_date;
+        $this->publishDate = $publishDate;
 
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getAuthor(): ?Author
     {
-        return $this->category;
+        return $this->author;
     }
 
-    public function setCategory(?string $category): static
+    public function setAuthor(?Author $author): static
     {
-        $this->category = $category;
+        $this->author = $author;
 
         return $this;
     }
