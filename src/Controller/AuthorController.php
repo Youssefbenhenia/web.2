@@ -34,7 +34,8 @@ final class AuthorController extends AbstractController
         ]);
     }
 
-     #[Route('/list', name: 'author_list')]
+
+    #[Route('/list', name: 'author_list')]
     public function authorList(): Response
     {
         return $this->render('author/list.html.twig', [
@@ -42,7 +43,7 @@ final class AuthorController extends AbstractController
         ]);
     }
 
- //serach by id
+    //serach by id
     public function serchById($id): null|array
     {
         foreach ($this->authors as $author) {
